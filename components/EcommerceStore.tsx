@@ -9,6 +9,7 @@ import { useEcommerceStore } from '@/hooks/useEcommerceStore'
 import TransactionHandler from './TransactionHandler'
 import PaymentModal from './PaymentModal'
 import Receipt from './Receipt'
+import React from 'react'
 
 export default function EcommerceStore() {
   const {

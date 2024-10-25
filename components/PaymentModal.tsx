@@ -11,6 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { formatCurrency } from '@/lib/data'
+import React from 'react'
 
 interface PaymentModalProps {
   isOpen: boolean

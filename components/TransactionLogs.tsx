@@ -1,6 +1,7 @@
 "use client"
 
 import { useEcommerceStore } from '@/hooks/useEcommerceStore'
+import React from 'react'
 
 export function TransactionLogs() {
   const { logs } = useEcommerceStore()

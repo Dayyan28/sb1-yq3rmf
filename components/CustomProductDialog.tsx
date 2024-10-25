@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dialog"
 import { useEcommerceStore } from '@/hooks/useEcommerceStore'
 import { Product } from '@/types'
+import React from 'react'
 
 interface CustomProductDialogProps {
   open: boolean

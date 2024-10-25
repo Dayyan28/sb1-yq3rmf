@@ -7,6 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { formatCurrency } from '@/lib/data'
 import { Product } from '@/types'
+import React from 'react'
 
 interface ReceiptProps {
   order: Product[]

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { formatCurrency } from '@/lib/data'
+import React from 'react'
 
 interface TransactionHandlerProps {
   autoFinalise: string

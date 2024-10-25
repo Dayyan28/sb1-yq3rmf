@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/tooltip"
 import { useEcommerceStore } from '@/hooks/useEcommerceStore'
 import { formatCurrency } from '@/lib/data'
+import React from 'react'
 
 interface OrderSummaryProps {
   autoFinalise: string

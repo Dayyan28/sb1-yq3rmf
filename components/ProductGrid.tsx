@@ -11,6 +11,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { useEcommerceStore } from '@/hooks/useEcommerceStore'
+import React from 'react'
 
 interface ProductGridProps {
   onCustomProduct: () => void
