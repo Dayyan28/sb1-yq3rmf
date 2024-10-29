@@ -11,7 +11,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { useEcommerceStore } from '@/hooks/useEcommerceStore'
-import React from 'react'
 
 interface ProductGridProps {
   onCustomProduct: () => void
@@ -19,6 +18,22 @@ interface ProductGridProps {
 
 export function ProductGrid({ onCustomProduct }: ProductGridProps) {
   const { productList, addToOrder } = useEcommerceStore()
+
+  const handleAddToOrder = (product: any) => {
+    if (product.isCustom) {
+      onCustomProduct()
+    } else {
+      // Ensure we're passing a properly formatted order item
+      addToOrder({
+        id: product.id,
+        name: product.name,
+        quantity: 1,
+        price: product.price,
+        pricePerUnit: product.price,
+        image: product.image
+      })
+    }
+  }
 
   return (
     <div className="lg:w-1/2">
@@ -60,7 +75,7 @@ export function ProductGrid({ onCustomProduct }: ProductGridProps) {
             </CardContent>
             <CardFooter className="p-4 pt-0">
               <Button 
-                onClick={() => product.isCustom ? onCustomProduct() : addToOrder(product)} 
+                onClick={() => handleAddToOrder(product)} 
                 className="w-full bg-[#FF6B4A] hover:bg-[#FF6B4A]/90 text-white"
               >
                 <Plus className="h-4 w-4 mr-2" />

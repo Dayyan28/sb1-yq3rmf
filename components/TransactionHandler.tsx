@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { formatCurrency } from '@/lib/data'
 import React from 'react'
+import { useEcommerceStore } from '@/hooks/useEcommerceStore'
 
 interface TransactionHandlerProps {
   autoFinalise: string
@@ -24,6 +25,7 @@ export default function TransactionHandler({
 }: TransactionHandlerProps) {
   const [status, setStatus] = useState<'pending' | 'processing' | 'success' | 'error'>('pending')
   const [transactionId, setTransactionId] = useState('')
+  const { storeTrxDetails, sendTransactionAdvice } = useEcommerceStore()
 
   const handleInitiateTransaction = async () => {
     try {
@@ -45,9 +47,11 @@ export default function TransactionHandler({
   const handleFinaliseTransaction = async () => {
     try {
       setStatus('processing')
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
+      // Send advice for each wiCode transaction
+      const wiCodes = wiCode.split(',')
+      for (const code of wiCodes) {
+        await sendTransactionAdvice(code)
+      }
       onTransactionComplete()
     } catch (error) {
       setStatus('error')
