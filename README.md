@@ -1,6 +1,6 @@
 # Yoyo Store
 
-A modern e-commerce store built with Next.js, TypeScript, and Tailwind CSS.
+A modern e-commerce store built with Next.js, JavaScript, and Tailwind CSS.
 
 ## Features
 
@@ -16,7 +16,7 @@ A modern e-commerce store built with Next.js, TypeScript, and Tailwind CSS.
 ## Tech Stack
 
 - Next.js 13
-- TypeScript
+- JavaScript
 - Tailwind CSS
 - Shadcn UI Components
 - Lucide Icons
