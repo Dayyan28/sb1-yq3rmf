@@ -1,12 +1,12 @@
-"use client"
+'use client'
 
 import { useState } from 'react'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Alert, AlertDescription } from '@/components/ui/alert'
 import { formatCurrency } from '@/lib/data'
 import React from 'react'
-import { useEcommerceStore } from '@/hooks/useEcommerceStore'
+import { useEcommerceStore } from '@/hooks/useEcommerceStore.context'
 
 interface TransactionHandlerProps {
   autoFinalise: string
@@ -31,11 +31,11 @@ export default function TransactionHandler({
     try {
       setStatus('processing')
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
+      await new Promise((resolve) => setTimeout(resolve, 1500))
+
       setTransactionId('TXN' + Date.now())
       setStatus('success')
-      
+
       if (autoFinalise === 'yes') {
         handleFinaliseTransaction()
       }
@@ -62,8 +62,8 @@ export default function TransactionHandler({
     try {
       setStatus('processing')
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
       onClose()
     } catch (error) {
       setStatus('error')

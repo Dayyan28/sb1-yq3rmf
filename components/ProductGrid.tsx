@@ -1,16 +1,11 @@
-"use client"
+'use client'
 
 import Image from 'next/image'
 import { Plus, HelpCircle } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { useEcommerceStore } from '@/hooks/useEcommerceStore'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardFooter } from '@/components/ui/card'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { useEcommerceStore } from '@/hooks/useEcommerceStore.context'
 
 interface ProductGridProps {
   onCustomProduct: () => void
@@ -30,7 +25,7 @@ export function ProductGrid({ onCustomProduct }: ProductGridProps) {
         quantity: 1,
         price: product.price,
         pricePerUnit: product.price,
-        image: product.image
+        image: product.image,
       })
     }
   }
@@ -62,20 +57,19 @@ export function ProductGrid({ onCustomProduct }: ProductGridProps) {
                       </TooltipTrigger>
                       <TooltipContent>
                         <p className="max-w-xs">
-                          Use this option to specify a custom SKU for testing specific discounts with wiCodes.
+                          Use this option to specify a custom SKU for testing specific discounts
+                          with wiCodes.
                         </p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
                 )}
               </div>
-              {!product.isCustom && (
-                <p className="text-sm text-[#4A6363]">{product.price}</p>
-              )}
+              {!product.isCustom && <p className="text-sm text-[#4A6363]">{product.price}</p>}
             </CardContent>
             <CardFooter className="p-4 pt-0">
-              <Button 
-                onClick={() => handleAddToOrder(product)} 
+              <Button
+                onClick={() => handleAddToOrder(product)}
                 className="w-full bg-[#FF6B4A] hover:bg-[#FF6B4A]/90 text-white"
               >
                 <Plus className="h-4 w-4 mr-2" />

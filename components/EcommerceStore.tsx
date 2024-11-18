@@ -1,23 +1,18 @@
-"use client"
+'use client'
 
 import { useState } from 'react'
 import { ProductGrid } from './ProductGrid'
 import { OrderSummary } from './OrderSummary'
 import { TransactionLogs } from './TransactionLogs'
 import { CustomProductDialog } from './CustomProductDialog'
-import { useEcommerceStore } from '@/hooks/useEcommerceStore'
+import { useEcommerceStore } from '@/hooks/useEcommerceStore.context'
 import TransactionHandler from './TransactionHandler'
 import PaymentModal from './PaymentModal'
 import Receipt from './Receipt'
 import React from 'react'
 
 export default function EcommerceStore() {
-  const {
-    order,
-    discounts,
-    calculateDiscountedTotal,
-    calculateTotalDiscount,
-  } = useEcommerceStore()
+  const { order, discounts, calculateDiscountedTotal, calculateTotalDiscount } = useEcommerceStore()
 
   const [isCustomDialogOpen, setIsCustomDialogOpen] = useState(false)
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false)
@@ -37,29 +32,26 @@ export default function EcommerceStore() {
           <h1 className="text-2xl font-bold text-[#FF6B4A]">Yoyo Online Store</h1>
         </div>
       </header>
-      
+
       <main className="flex-grow flex flex-col lg:flex-row p-4 gap-6">
         <ProductGrid onCustomProduct={() => setIsCustomDialogOpen(true)} />
-        <OrderSummary 
+        <OrderSummary
           autoFinalise={autoFinalise}
           setAutoFinalise={setAutoFinalise}
           onProceedToPayment={() => setShowTransactionHandler(true)}
         />
       </main>
-      
+
       <TransactionLogs />
 
-      <CustomProductDialog 
-        open={isCustomDialogOpen} 
-        onOpenChange={setIsCustomDialogOpen} 
-      />
+      <CustomProductDialog open={isCustomDialogOpen} onOpenChange={setIsCustomDialogOpen} />
 
       {showTransactionHandler && (
         <TransactionHandler
           autoFinalise={autoFinalise}
           total={calculateDiscountedTotal()}
           onTransactionComplete={handleTransactionComplete}
-          wiCode={discounts.map(d => d.wiCode).join(',')}
+          wiCode={discounts.map((d) => d.wiCode).join(',')}
           onClose={() => setShowTransactionHandler(false)}
         />
       )}
