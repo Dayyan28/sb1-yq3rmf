@@ -44,7 +44,6 @@ export const useEcommerceStore = () => {
 export function ECommerceStoreProvider({ children }: { children: React.ReactNode }) {
   const [productList] = useState(products)
   const [order, setOrder] = useState<Product[]>([])
-  console.log('order: ', order)
   const [wiCode, setWiCode] = useState('')
   const [discounts, setDiscounts] = useState<Discount[]>([])
   const [error, setError] = useState<any>(null)
@@ -58,11 +57,8 @@ export function ECommerceStoreProvider({ children }: { children: React.ReactNode
   })
 
   const addToOrder = (product: Product) => {
-    console.log('product: ', product)
-
     setOrder((prevOrder) => {
       const existingProduct = prevOrder.find((item) => item.id === product.id)
-      console.log('existingProduct: ', existingProduct)
       if (existingProduct) {
         return prevOrder.map((item) =>
           item.id === product.id

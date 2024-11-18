@@ -38,8 +38,6 @@ export function OrderSummary({
     setWiCode,
   } = useEcommerceStore()
 
-  console.log('order: ', order)
-
   return (
     <div className="lg:w-1/2 lg:mt-10">
       <Card className="w-full pb-0 bg-white">
